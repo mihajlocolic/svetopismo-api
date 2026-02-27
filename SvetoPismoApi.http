@@ -1,0 +1,6 @@
+@SvetoPismoApi_HostAddress = http://localhost:5034
+
+GET {{SvetoPismoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
