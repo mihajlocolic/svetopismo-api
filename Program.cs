@@ -1,5 +1,5 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +16,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(dbContextOptions =>
         .EnableSensitiveDataLogging() // Include sensitive app data in logs (useful for debugging)
         .EnableDetailedErrors() // Provide more detailed errors
 );
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+});
+
 var app = builder.Build();
 
 
 app.MapControllers();
 
+app.UseCors("AllowAll");
 
 app.Run();

@@ -12,10 +12,11 @@ public class Verse
     [Column("stih_tekst")]
     public required string VerseText {get; set;}
     
-    [Column("knjiga_id")]
+    [Column("knjiga_id")]    
     public long BookId {get; set;}
 
     [Column("glava_id")]
+    [ForeignKey("stihovi_ibfk_1")]
     public long ChapterId {get; set;}
 
     [Column("glava_broj")]
