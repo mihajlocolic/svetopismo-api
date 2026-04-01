@@ -3,5 +3,5 @@ public class VerseDTO {
     public int VerseNumber { get; set; }
     public string VerseText { get; set; }
     public int ChapterNumber { get; set; }
-    public string BookName { get; set; }
+    public string? BookName { get; set; }
 }

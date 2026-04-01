@@ -17,14 +17,6 @@ public class VerseController : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> GetVerse([FromQuery] string verseText)
     {        
-        /*var verses = await _context.Verses.FromSqlInterpolated($"SELECT s.stih_id as Id, s.stih_broj as VerseNumber, s.stih_tekst as VerseText, s.glava_broj as ChapterNumber, k.knjiga_ime as BookName FROM stihovi AS s JOIN knjige AS k WHERE s.stih_tekst LIKE { '%' + verseText + '%'} AND s.knjiga_id = k.knjiga_id")
-        .AsAsyncEnumerable()
-        .Select(v => new VerseDTO
-        {
-        })
-        .ToListAsync();        
-        */
-
         var verses = await (
             from v in _context.Verses
             join b in _context.Books on v.BookId equals b.BookId
