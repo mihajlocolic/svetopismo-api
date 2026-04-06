@@ -7,19 +7,19 @@ public class ChapterController : ControllerBase
 {
 
     private readonly ApplicationDbContext _context;
-    public ChapterController(ApplicationDbContext context)    
+    public ChapterController(ApplicationDbContext context)
     {
         _context = context;
     }
 
-    [HttpGet("{chapterNumber}")]
-    public async Task<IActionResult> GetChapter(int chapterNumber)
-    {        
+    [HttpGet("{chapterId}")]
+    public async Task<IActionResult> GetChapter(int chapterId)
+    {
         var chapter = await _context.Chapters
-            .Where(c => c.ChapterNumber == chapterNumber)
+            .Where(c => c.ChapterId == chapterId)
             .FirstOrDefaultAsync();
 
-        if(chapter == null)
+        if (chapter == null)
         {
             return NotFound();
         }
@@ -28,5 +28,5 @@ public class ChapterController : ControllerBase
             return Ok(chapter);
         }
     }
-    
+
 }
